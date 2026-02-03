@@ -1,0 +1,25 @@
+{
+    "South Africa": {
+      "Thailand": {
+        "type": "Visa Exempt",
+        "maxStay": "30 days",
+        "notes": "Tourism only. Extension possible.",
+        "lastUpdated": "2025-01-01"
+      },
+      "Japan": {
+        "type": "Visa Required",
+        "maxStay": null,
+        "notes": "Apply before travel.",
+        "lastUpdated": "2025-01-01"
+      }
+    },
+    "United States": {
+      "Thailand": {
+        "type": "Visa Exempt",
+        "maxStay": "30 days",
+        "notes": "Visa exemption for tourism.",
+        "lastUpdated": "2025-01-01"
+      }
+    }
+  }
+  
