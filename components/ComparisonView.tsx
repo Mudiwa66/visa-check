@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Pressable } from "react-native";
+import { View, Text, ScrollView, Pressable, Linking } from "react-native";
 import { countries } from "../data/countries";
 import { SPACING, BORDER_RADIUS, FONT_SIZE, AppColors } from "../constants/theme";
 
@@ -146,9 +146,17 @@ export default function ComparisonView({
                     </Text>
                   )}
 
-                  <Text style={{ fontSize: FONT_SIZE.xs, color: AppColors.text.hint, marginTop: SPACING.xs }}>
-                    {visaData.source}
-                  </Text>
+                  {visaData.sourceUrl ? (
+                    <Pressable onPress={() => Linking.openURL(visaData.sourceUrl!)}>
+                      <Text style={{ fontSize: FONT_SIZE.xs, color: AppColors.primary, textDecorationLine: "underline", marginTop: SPACING.xs }}>
+                        {visaData.source} ↗
+                      </Text>
+                    </Pressable>
+                  ) : (
+                    <Text style={{ fontSize: FONT_SIZE.xs, color: AppColors.text.hint, marginTop: SPACING.xs }}>
+                      {visaData.source}
+                    </Text>
+                  )}
                 </>
               ) : (
                 <View

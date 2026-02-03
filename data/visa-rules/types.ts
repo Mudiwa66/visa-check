@@ -6,6 +6,7 @@ export interface VisaRequirement {
   cost?: string;
   notes?: string;
   source: string;
+  sourceUrl?: string;
 }
 
 export type DestinationRules = {

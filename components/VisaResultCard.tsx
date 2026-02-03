@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Linking } from 'react-native';
 import { SPACING, BORDER_RADIUS, FONT_SIZE, AppColors } from '../constants/theme';
 
 type VisaType = 'visa-free' | 'visa-on-arrival' | 'e-visa' | 'visa-required' | 'eta-required';
@@ -9,6 +9,7 @@ interface VisaResult {
   cost?: string;
   notes?: string;
   source: string;
+  sourceUrl?: string;
 }
 
 interface VisaResultCardProps {
@@ -74,9 +75,17 @@ export default function VisaResultCard({ result }: VisaResultCardProps) {
       </Text>
       {result.cost && <Text style={styles.cost}>Cost: {result.cost}</Text>}
       {result.notes && <Text style={styles.notes}>{result.notes}</Text>}
-      <Text style={styles.source}>
-        Source: {result.source || 'Source not available'}
-      </Text>
+      {result.sourceUrl ? (
+        <Pressable onPress={() => Linking.openURL(result.sourceUrl!)}>
+          <Text style={[styles.source, styles.sourceLink]}>
+            Source: {result.source || 'Source not available'} ↗
+          </Text>
+        </Pressable>
+      ) : (
+        <Text style={styles.source}>
+          Source: {result.source || 'Source not available'}
+        </Text>
+      )}
     </View>
   );
 }
@@ -148,5 +157,9 @@ const styles = StyleSheet.create({
     fontSize: FONT_SIZE.sm,
     color: AppColors.text.hint,
     marginTop: SPACING.sm,
+  },
+  sourceLink: {
+    color: AppColors.primary,
+    textDecorationLine: 'underline' as const,
   },
 });

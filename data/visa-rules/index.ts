@@ -9,6 +9,7 @@ const nationalityLoaders: Record<string, NationalityLoader> = {
   ZA: () => import('./nationalities/ZA'),
   DE: () => import('./nationalities/DE'),
   GB: () => import('./nationalities/GB'),
+  NL: () => import('./nationalities/NL'),
 };
 
 const cache: Map<NationalityCode, DestinationRules> = new Map();
